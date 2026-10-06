@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connected · JHS Groove</title><link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="style.css"><meta name="robots" content="noindex"></head><body><main>
+<header><img src="favicon.png" alt=""><b>JHS Groove</b></header>
+<nav><a href="./">Home</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="data-deletion.html">Data Deletion</a></nav>
+<article>
+<h1 id="h">OAuth callback</h1><p id="p" class="muted">This page receives the redirect after connecting an account to sns_automate.</p>
+<script>
+const q = new URLSearchParams(location.search), h = document.getElementById('h'), p = document.getElementById('p');
+const clean = (s) => String(s).replace(/[<>&"]/g, '');
+if (q.get('error')) { h.textContent = 'Connection cancelled'; p.textContent = q.get('error_description') || q.get('error'); }
+else if (q.get('code')) {
+  h.textContent = 'Authorization received';
+  p.innerHTML = 'Copy this code to the operator. It expires in a few minutes.<br><br><code>' + clean(q.get('code')) + '</code>';
+}
+</script></article></main></body></html>
